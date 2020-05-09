@@ -6,16 +6,12 @@ import java.util.List;
 public class Pair {
 	Pair() {
 	}
-	
-	
 // 構造体の設定
 	static ArrayList<Pairs>array = new ArrayList<Pairs>();
-
 //	リストに値を格納する変数です
 	public void setNum() {
 		array.add(setArray(1, 2));
 	}
-	
 //	構造体に値をセットする変数です
 	private Pairs setArray(int first, int second) {
 		Pairs pair = new Pairs();
