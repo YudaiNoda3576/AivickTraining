@@ -21,30 +21,32 @@ public class Calc {
 		ArrayIndexOutOfBoundsException
 		,NumberFormatException
 		,IllegalArgumentException{
-//		if(opr == "+") {
-//			System.out.println(num1 + num2); 
-//		} else if ( opr == "-") {
-//			System.out.println(num1 - num2); 
-//		} else if ( opr == "m") {
-//			System.out.println(num1 * num2); 
-//		} else if ( opr == "/") {
-//			System.out.println(num1 / num2); 
-//		} else {
-//			System.out.println("入力をやり直してください");
-//		}
-		switch(opr) {
-		case"+":
-			System.out.println(num1 + num2);
-			break;
-		case"-":
-			System.out.println(num1 - num2);
-			break;
-		case"*":
-			System.out.println(num1 * num2);
-			break;
-		case"/":
-			System.out.println(num1 / num2);
-			break;
+//		==　はプリミティブ型のみ（int,doubleなど）
+		if(opr.equals("+")) {
+			System.out.println(num1 + num2); 
+		} else if ( opr == "-") {
+			System.out.println(num1 - num2); 
+		} else if ( opr == "m") {
+			System.out.println(num1 * num2); 
+		} else if ( opr == "/") {
+			System.out.println(num1 / num2); 
+		} else {
+			System.out.println("入力をやり直してください");
 		}
+//		switch文の場合
+//		switch(opr) {
+//		case"+":
+//			System.out.println(num1 + num2);
+//			break;
+//		case"-":
+//			System.out.println(num1 - num2);
+//			break;
+//		case"*":
+//			System.out.println(num1 * num2);
+//			break;
+//		case"/":
+//			System.out.println(num1 / num2);
+//			break;
+//		}
 	}
 }
