@@ -1,5 +1,5 @@
 package practice_day2;
-
+//模範解答の模写です
 import java.util.Objects;
 //ジェネリクス（総称型）
 //ジェネリッククラスの定義　タプル：複数かつ異なる要素に順序をつけて格納できるデータ構造
