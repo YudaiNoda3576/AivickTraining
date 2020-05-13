@@ -1,41 +1,42 @@
 package homework3;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Menu {
-	private String name;
-	private String type;
-	private List<Recipe> recipes;
-	private double cal;
+	private final String name;
+	private final String type;
+	private final List<Recipe> recipes;
+//	private final double cal;
 	
 	public Menu(String name, String type, List<Recipe> recipes) {
 		this.name = name;
 		this.type = type;
-		this.recipes = recipes;
+//		リストは中身の書き換えが起こり得る
+//		Collections.unmodifiableList これで修正できないリストを作成する
+		this.recipes = Collections.unmodifiableList(recipes);
 	}
 
 	public String getName() {
 		return name;
 	}
+	
 	public String getType() {
 		return type;
 	}
+	
 	public List<Recipe> getRecipes() {
 		return recipes;
 	}
-	public double getCal() {
-		return cal;
-	}
 	
-	public static void main(String[] args) {
-		Recipe r1 = new Recipe("ハンバーグ", 200.5);
-		Recipe r2 = new Recipe("目玉焼き", 120);
-		
-		Menu menu = new Menu("ハンバーグ弁当", "洋食", List.of(r1, r2));
-		System.out.println(menu.getName()); //ハンバーグ
-		System.out.println(menu.getType()); //洋食
-		System.out.println(menu.getCal()); //320.5
-		System.out.println(menu.getRecipes().get(0).getName()); //ハンバーグ
+	public double getCal() {
+		int sum = 0;
+//		一度変数に代入した方が、パフォーマンスを考慮した書き方になる
+		int size = recipes.size();
+		for(int i = 0; i < size; i++) {
+			sum += recipes.get(i).getCal();
+		}
+		return sum;
 	}
 	
 }

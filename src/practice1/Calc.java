@@ -24,15 +24,19 @@ public class Calc {
 //		==　はプリミティブ型のみ（int,doubleなど）
 		if(opr.equals("+")) {
 			System.out.println(num1 + num2); 
-		} else if ( opr == "-") {
+		} else if (opr.equals("-")) {
 			System.out.println(num1 - num2); 
-		} else if ( opr == "m") {
+		} else if (opr.equals("m")) {
 			System.out.println(num1 * num2); 
-		} else if ( opr == "/") {
+		} else if (opr.equals("/")) {
 			System.out.println(num1 / num2); 
 		} else {
 			System.out.println("入力をやり直してください");
 		}
+//		publicクラスは１ファイルに1つ
+
+		
+		
 //		switch文の場合
 //		switch(opr) {
 //		case"+":
