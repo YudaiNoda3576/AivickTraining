@@ -1,4 +1,4 @@
-package jp.co.aivick.homwork2;
+package jp.co.aivick.homework2;
 
 import java.util.ArrayList;
 
