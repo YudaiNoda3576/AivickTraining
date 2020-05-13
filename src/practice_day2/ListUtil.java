@@ -1,6 +1,7 @@
 package practice_day2;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class ListUtil {
@@ -57,7 +58,7 @@ public class ListUtil {
 	}
 	
 	public static List<Pair<Integer, Integer>> zip(List<Integer> first, List<Integer> second){
-		List<Pair<Integer, Integer>> pair = new ArrayList();
+		List<Pair<Integer, Integer>> pair = new ArrayList<>();
 		int min_size = Math.min(first.size(), second.size()); 
 		
 		for(int i = 0; i < min_size; i++) {
@@ -101,6 +102,8 @@ public class ListUtil {
 		}
 		return pairs;
 	}	
+	
+	
 }
 	
 	
