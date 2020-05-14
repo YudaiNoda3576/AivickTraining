@@ -45,6 +45,10 @@ public class ListUtil {
 		System.out.println("-----------positions-------------");
 		var indexes = ListUtil.positions(10, List.of(10,13,10,12,10,10));
 		System.out.println(indexes);
+		
+		System.out.println("-----------scalarProduct-------------");
+		var total = ListUtil.scalarProduct(List.of(1,2,3), List.of(4,5,6));
+		System.out.println(total);
 	}
 
 //	evensofメソッド
@@ -123,22 +127,6 @@ public class ListUtil {
 		}
 		return true;
 	}
-
-/*	public static List<Integer> positions(int num, List<Integer> intList) {
-		List<Integer> indexes = new ArrayList<>();
-		for (int index : intList) {
-			indexes.add(index);
-		}
-
-		var positions = new ArrayList<Integer>();
-		var pairs = zip(indexes, intList);
-		for (var pair : pairs) {
-			if (pair.getSecond() == num) {
-				positions.add(pair.getFirst());
-			}
-		}
-		return positions;
-	}*/
 	
 	public static List<Integer> positions(int num, List<Integer> intList) {
 //		インデックス番号を格納 zipを利用するので、リスト形式にする
@@ -159,7 +147,20 @@ public class ListUtil {
 		return positions;
 		
 	}
+//	scalarProductメソッド
+	public static int scalarProduct(List<Integer> first, List<Integer> second) {
+		int total = 0;
+		for(int i = 0; i < first.size(); i++) {
+			total += first.get(i) * second.get(i);
+		}
+		return total;
+	}
 	
+//	zip4メソッド
+	public static List<Pair<Integer, Pair<Integer, Pair<Integer, Integer>>>> zip4 (List<Integer>list1,
+			List<Integer> list2, List<Integer> list3, List<Integer> list4) {
+		return null;
+	}
 	
 
 }

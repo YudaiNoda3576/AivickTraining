@@ -16,11 +16,4 @@ public class Recipe {
 		return cal;
 	}
 	
-	public static void main(String[] args) {
-		Recipe r1 = new Recipe("ハンバーグ", 200.5);
-		Recipe r2 = new Recipe("サーモン", 120);
-		System.out.println( r1.getName());
-		System.out.println( r2.getCal());
-	}
-	
 }
