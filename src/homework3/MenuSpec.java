@@ -46,5 +46,6 @@ class CalorieOverSpec implements MenuSpec {
 			 
 			 return a && b;
 		 }
+		 
 	 }
 }

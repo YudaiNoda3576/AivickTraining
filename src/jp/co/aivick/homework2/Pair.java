@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pair<T, S> {
+	
+	
 	private final T first;
 	private final S second;
 	

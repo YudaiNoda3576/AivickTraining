@@ -2,6 +2,7 @@ package practice_day2;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 
 public class ListUtil {
@@ -70,18 +71,6 @@ public class ListUtil {
 		return pairs;
 	}	
 	
-	
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
