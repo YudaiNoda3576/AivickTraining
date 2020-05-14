@@ -1,6 +1,7 @@
 package jp.co.aivick.homework2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import jp.co.aivick.homework2.Pair;
 
@@ -38,7 +39,12 @@ public class ListUtil {
 		System.out.println(pairs);
 
 		System.out.println("-----------sorted-------------");
-
+		var pairs1 = ListUtil.sorted(List.of(1,2,3,4));
+		System.out.println(pairs1);
+		
+		System.out.println("-----------positions-------------");
+		var indexes = ListUtil.positions(10, List.of(10,13,10,12,10,10));
+		System.out.println(indexes);
 	}
 
 //	evensofメソッド
@@ -109,8 +115,8 @@ public class ListUtil {
 	}
 
 	public static boolean sorted(List<Integer> intList) {
-		var pairs = pairs(intList);
-		for (var pair : pairs) {
+		var pairs1 = pairs(intList);
+		for (var pair : pairs1) {
 			if (pair.getFirst() > pair.getSecond()) {
 				return false;
 			}
@@ -118,7 +124,7 @@ public class ListUtil {
 		return true;
 	}
 
-	public static List<Integer> positions(int num, List<Integer> intList) {
+/*	public static List<Integer> positions(int num, List<Integer> intList) {
 		List<Integer> indexes = new ArrayList<>();
 		for (int index : intList) {
 			indexes.add(index);
@@ -132,6 +138,28 @@ public class ListUtil {
 			}
 		}
 		return positions;
+	}*/
+	
+	public static List<Integer> positions(int num, List<Integer> intList) {
+//		インデックス番号を格納 zipを利用するので、リスト形式にする
+		List<Integer> indexes = new ArrayList<>();
+		for(int i = 0; i < intList.size(); i++) {
+			indexes.add(i);
+		}
+//		
+		var positions = new ArrayList<Integer>();
+		var pairs = zip(indexes, intList);
+		for (var pair : pairs) {
+//			numとリストの数値が等しい時、
+			if(pair.getSecond() == num) {
+//				インデックス番号を取得するようにする
+				positions.add(pair.getFirst());
+			}	
+		}
+		return positions;
+		
 	}
+	
+	
 
 }
