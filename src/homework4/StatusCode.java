@@ -1,11 +1,13 @@
 package homework4;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class StatusCode {
-	static Map<Integer, String> errorResponse = new HashMap<>() {
+	
+	private static Map<Integer, String> errorResponse = new HashMap<>() {
 		{
 			this.put(100, "Continue");
 			this.put(200, "OK");
@@ -22,7 +24,9 @@ public class StatusCode {
 	
 	static String errorMessage(int code) {
 		return errorResponse.get(code);
+	
 	}
+	
 	
 	
 }
