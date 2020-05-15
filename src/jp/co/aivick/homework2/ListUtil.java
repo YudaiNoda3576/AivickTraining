@@ -3,7 +3,9 @@ package jp.co.aivick.homework2;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jp.co.aivick.homework2.Pair;
+
+import com.sun.net.httpserver.Authenticator.Result;
+
 
 
 public class ListUtil {
@@ -157,10 +159,21 @@ public class ListUtil {
 	}
 	
 //	zip4メソッド
+//	要検証
 	public static List<Pair<Integer, Pair<Integer, Pair<Integer, Integer>>>> zip4 (List<Integer>list1,
 			List<Integer> list2, List<Integer> list3, List<Integer> list4) {
-		return null;
+		
+		var min = Math.min(Math.min(list1.size(), list2.size()),
+				Math.min(list3.size(), list4.size()));
+		List<Pair<Integer, Pair<Integer, Pair<Integer, Integer>>>> result = new ArrayList<>(); 
+		for(int i = 0; i < min; i++) {
+			result.add(tetrad(list1.get(i), list2.get(i), list3.get(i), list4.get(i)));
+		}
+		return result;
 	}
-	
 
+	private static Pair<Integer, Pair<Integer, Pair<Integer, Integer>>> tetrad(Integer a, Integer b,
+			 Integer c, Integer d) {
+		return new Pair<>(a, new Pair<>(b, new Pair<>(c, d)));
+	}
 }
