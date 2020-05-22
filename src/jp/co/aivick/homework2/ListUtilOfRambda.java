@@ -1,6 +1,7 @@
 package jp.co.aivick.homework2;
 
 import java.awt.font.NumericShaper.Range;
+
 import java.util.ArrayList;
 
 import java.util.Iterator;
@@ -12,67 +13,59 @@ import java.util.stream.IntStream;
 import com.sun.net.httpserver.Authenticator.Result;
 import jp.co.aivick.homework2.Pair;
 
+
 public class ListUtilOfRambda {
 
 		public static void main(String[] args) {
 			System.out.println("-----------evensof-------------");
 			var intList = List.of(1, 2, 3, 4, 5, 6);
 
-			var evensList = ListUtil.evensof(intList);
+			var evensList = ListUtilOfRambda.evensof(intList);
 
 			for (Integer e : evensList) {
 				System.out.println(e);
 			}
 
 			System.out.println("-----------replicate-------------");
-			var hogeList = ListUtil.replicate(3, "hoge");
+			var hogeList = ListUtilOfRambda.replicate(3, "hoge");
 			System.out.println(hogeList);
 
 			System.out.println("-----------zip-------------");
-			var pair = ListUtil.zip(List.of(1, 2, 3), List.of(2, 3, 4));
+			var pair = ListUtilOfRambda.zip(List.of(1, 2, 3), List.of(2, 3, 4));
 			System.out.println(pair);
 
 			System.out.println("-----------factors-------------");
-			var factors = ListUtil.factors(7);
+			var factors = ListUtilOfRambda.factors(7);
 			System.out.println(factors);
 
 			System.out.println("-----------perfect-------------");
-			var perfects = ListUtil.perfects(500);
+			var perfects = ListUtilOfRambda.perfects(500);
 			System.out.println(perfects);
 			
 			System.out.println("-----------total-------------");
 			var total = ListUtilOfRambda.totals(List.of(10,20,10,30,40), 10);
 			System.out.println(total);
-			
-			
 
 			System.out.println("-----------pairs-------------");
-			var pairs = ListUtil.pairs(List.of(1, 2, 3, 4));
+			var pairs = ListUtilOfRambda.pairs(List.of(1, 2, 3, 4));
 			System.out.println(pairs);
 
 			System.out.println("-----------sorted-------------");
-			var pairs1 = ListUtil.sorted(List.of(1, 2, 3, 4));
+			var pairs1 = ListUtilOfRambda.sorted(List.of(1, 2, 3, 4));
 			System.out.println(pairs1);
 
 			System.out.println("-----------positions-------------");
-			var indexes = ListUtil.positions(10, List.of(10, 13, 10, 12, 10, 10));
+			var indexes = ListUtilOfRambda.positions(10, List.of(10, 13, 10, 12, 10, 10));
 			System.out.println(indexes);
 
 			System.out.println("-----------scalarProduct-------------");
-			var totals = ListUtil.scalarProduct(List.of(1, 2, 3), List.of(4, 5, 6));
+			var totals = ListUtilOfRambda.scalarProduct(List.of(1, 2, 3), List.of(4, 5, 6));
 			System.out.println(totals);
 		}
 
+//		ラムダ式を用いてリファクタリングの練習
 //		evensofメソッド
 		public static List<Integer> evensof(List<Integer> intList) {
-//			List<Integer> evensList = new ArrayList<>();
-//			for (Integer e : intList) {
-//				if (e % 2 == 0) {
-//					evensList.add(e);
-//				}
-//			}
-//			return evensList;
-//			ラムダ式を用いてリファクタリング
 			return intList.stream()
 //					predicate eは各リスト要素、右には条件
 					.filter(e -> e % 2 == 0)
@@ -81,13 +74,6 @@ public class ListUtilOfRambda {
 
 //		replicateメソッド
 		public static List<String> replicate(int arrayLength, String value) {
-//			List<String> hogeList = new ArrayList<>();
-//			for (int i = 0; i < arrayLength; i++) {
-//				hogeList.add(value);
-//			}
-//			return hogeList;
-			
-//			ラムダ式でリファクタリング
 //			rangeの指定した値は含まない
 			return IntStream.range(0, arrayLength)
 //					整数をvalue型に変換
@@ -107,19 +93,10 @@ public class ListUtilOfRambda {
 
 //		factorsメソッド
 		public static List<Integer> factors(int num) {
-//			List<Integer> factors = new ArrayList<>();
-//			for (int factor = 1; factor <= num; factor++) {
-//				if (num % factor == 0) {
-//					factors.add(factor);
-//				}
-//			}
-//			return factors;
-//			
 			return IntStream.range(1, num + 1)
 					.filter(i -> num % i == 0)
 					.mapToObj(i -> Integer.valueOf(i))
 					.collect(Collectors.toList());
-			
 		}
 
 		
@@ -127,9 +104,10 @@ public class ListUtilOfRambda {
 //			ラムダ式でリファクタリング
 			return (List<Integer>) IntStream.range(1, num + 1) 
 					.mapToObj(i -> new Pair<Integer, List<Integer>>(i, factors(i)))
-					.filter(p -> totals(p.getSecond(), p.getFirst()) == p.getFirst()
+					.filter(p -> totals(p.getSecond(), p.getFirst()) == p.getFirst())
+//					.map(x -> x.getFirst())
 					.map(Pair::getFirst)
-					.collect(Collectors.toList()));
+					.collect(Collectors.toList());
 					
 		}
 		
@@ -139,8 +117,8 @@ public class ListUtilOfRambda {
 //					メソッド参照を用いない書き方は↓
 //					.mapToInt(i -> Integer.valueOf(i))
 					.mapToInt(Integer::valueOf)
+//					終了処理
 					.sum();
-					
 		}
 
 
@@ -157,26 +135,24 @@ public class ListUtilOfRambda {
 		}
 
 		public static List<Integer> positions(int num, List<Integer> intList) {
+//			インデックス番号のリストを求める
 			List<Integer>indexes = IntStream.range(0, intList.size())
-//					Integerからinth型に変換して
+//					Integerからint型に変換して
 								 .boxed()
-//								 リスト化
+//								 リスト化　
 								 .collect(Collectors.toList());
 			
-			return zip(index, list).stream()
-								   .filter(evensof(e -> e.getSecond().equals(num))
+			return zip(indexes, intList).stream()
+					
+								   .filter(e -> e.getSecond() == num)
+//								   残ったインデックス番号でmap化
 							       .map(Pair::getFirst)
-								   .collect(Collectors.toList));
+							       
+								   .collect(Collectors.toList());
 		}
 
 //		scalarProductメソッド
 		public static int scalarProduct(List<Integer> v1, List<Integer> v2) {
-//			int total = 0;
-//			for (int i = 0; i < first.size(); i++) {
-//				total += first.get(i) * second.get(i);
-//			}
-//			return total;
-			
 //			二つの要素をペアにしてとじあわせる
 			return ListUtil.zip(v1, v2).stream()
 //					mapToIntにしないといけない

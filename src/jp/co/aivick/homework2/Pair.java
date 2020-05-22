@@ -20,5 +20,10 @@ public class Pair<T, S> {
 	public S getSecond() {
 		return second;
 	}
+//		表記を指定
+	@Override
+	public String toString() {
+		return "("+ this.first +  "," + this.second + ")";
+	}
 	
 }
