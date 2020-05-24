@@ -32,7 +32,7 @@ public class ListUtil {
 		System.out.println(pair);
 
 		System.out.println("-----------factors-------------");
-		var factors = ListUtil.factors(7);
+		var factors = ListUtil.factors(13);
 		System.out.println(factors);
 
 		System.out.println("-----------perfect-------------");
