@@ -120,7 +120,7 @@ public class ListUtilOfRambda {
 //		例えば 6 (= 1 + 2 + 3)、28 (= 1 + 2 + 4 + 7 + 14) や496が完全数である。
 		public static List<Integer> perfects(int num) {
 //			約数と同様
-			return (List<Integer>) IntStream.range(1, num + 1) 
+			return (List<Integer>)IntStream.range(1, num + 1) 
 //					iには引数(例1~500)が入り、Pair<Integer, List<Integer>(1~500, 1~500の約数)>でそれぞれのケースを考える
 					.mapToObj(i -> new Pair<Integer, List<Integer>>(i, factors(i)))
 //					pはPair　完全数　＝　i自身をのぞいた約数の和が、iと等しい時完全数である
@@ -128,14 +128,13 @@ public class ListUtilOfRambda {
 //					.map(x -> x.getFirst())
 					.map(Pair::getFirst)
 					
-					.collect(Collectors.toList());
-					
+					.collect(Collectors.toList());		
 		}
+		
 //	　第二引数で指定した数値をリストからのぞいて合計を算出するメソッド
 		public static int totals(List<Integer> intList, int exclusive) {
 //			すでに存在するリストから抽出したいので
 			return intList.stream()
-					
 					.filter(i -> i != exclusive)
 //					メソッド参照を用いない書き方は↓
 //					.mapToInt(i -> Integer.valueOf(i))　
@@ -148,7 +147,7 @@ public class ListUtilOfRambda {
 // 一つのリストからペアリストを生成するメソッド
 		public static List<Pair<Integer, Integer>> pairs(List<Integer> list) {
 
-			return IntStream.range(0, list.size() - 1)
+			return  IntStream.range(0, list.size() - 1)
 //					i番目、i＋1番目の数値でペアを作成
 					.mapToObj(i -> new Pair<>(list.get(i), list.get(i + 1)))
 //					リスト化
@@ -159,7 +158,8 @@ public class ListUtilOfRambda {
 		public static boolean sorted(List<Integer> intList) {
 			return pairs(intList).stream()
 //					条件に対してboolean型の結果を返す
-								 .noneMatch(p -> p.getFirst() > p.getSecond());
+//								 .noneMatch(p -> p.getFirst() > p.getSecond());
+								 .anyMatch(p -> p.getFirst() < p.getSecond());
 		}
 
 		public static List<Integer> positions(int num, List<Integer> intList) {
@@ -190,7 +190,7 @@ public class ListUtilOfRambda {
 					
 		}
 
-//		ラムダ式を餅入りときは型に注意する必要がある
+//		ラムダ式を用いる入りときは型に注意する必要がある
 //		メソッドの引数にとらわれず、処理の流れとして何をしたいかに沿って記述するイメージの方がわかりやすい
 //		複数処理を行って行くときは、どこでどの値がどう変換されているのか意識する必要がある
 		

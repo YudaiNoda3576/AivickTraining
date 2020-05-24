@@ -101,6 +101,7 @@ public class ListUtil {
 //	約数を出力する
 	public static List<Integer> factors(int num) {
 		List<Integer> factors = new ArrayList<>();
+		
 		for (int factor = 1; factor <= num; factor++) {
 			if (num % factor == 0) {
 				factors.add(factor);
